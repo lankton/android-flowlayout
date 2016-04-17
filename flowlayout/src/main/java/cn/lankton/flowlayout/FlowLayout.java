@@ -26,12 +26,18 @@ public class FlowLayout extends ViewGroup {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 //        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+//        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int mPaddingLeft = getPaddingLeft();
+        int mPaddingRight = getPaddingRight();
+        int mPaddingTop = getPaddingTop();
+        int mPaddingBottom = getPaddingBottom();
+
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
-        int lineUsed = 0;
-        int lineY = 0;
+        int lineUsed = mPaddingLeft + mPaddingTop;
+        int lineY = mPaddingTop;
+        int lineX = mPaddingLeft;
         int lineHeight = 0;
         for (int i = 0; i < this.getChildCount(); i++) {
             View child = this.getChildAt(i);
@@ -52,25 +58,30 @@ public class FlowLayout extends ViewGroup {
                 measureChildWithMargins(child, widthMeasureSpec, lineUsed, heightMeasureSpec, lineY);
                 childWidth = child.getMeasuredWidth();
                 childHeight = child.getMeasuredHeight();
-                spaceWidth = mlp.leftMargin + childWidth + mlp.rightMargin;
                 spaceHeight = mlp.topMargin + childHeight + mlp.bottomMargin;
             }
             if (spaceHeight > lineHeight) {
                 lineHeight = spaceHeight;
             }
-            lineUsed += mlp.leftMargin + childWidth + mlp.rightMargin;
+            lineUsed += spaceWidth;
         }
         setMeasuredDimension(
                 widthSize,
-                heightMode == MeasureSpec.EXACTLY ? heightSize : lineY + lineHeight
+                heightMode == MeasureSpec.EXACTLY ? heightSize : lineY + lineHeight + mPaddingBottom
         );
     }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        int lineY = 0;
+        int mPaddingLeft = getPaddingLeft();
+        int mPaddingRight = getPaddingRight();
+        int mPaddingTop = getPaddingTop();
+        int mPaddingBottom = getPaddingBottom();
+
+        int lineX = mPaddingLeft;
+        int lineY = mPaddingTop;
         int lineWidth = r - l;
-        int lineUsed = 0;
+        int lineUsed = mPaddingLeft + mPaddingRight;
         int lineHeight = 0;
         for (int i = 0; i < this.getChildCount(); i++) {
             View child = this.getChildAt(i);
@@ -80,20 +91,21 @@ public class FlowLayout extends ViewGroup {
             MarginLayoutParams mlp = (MarginLayoutParams) child.getLayoutParams();
             int childWidth = child.getMeasuredWidth();
             int childHeight = child.getMeasuredHeight();
-            Log.v("lanktondebug", "" + childWidth + "," + childHeight);
             int spaceWidth = mlp.leftMargin + childWidth + mlp.rightMargin;
             int spaceHeight = mlp.topMargin + childHeight + mlp.bottomMargin;
             if (lineUsed + spaceWidth > lineWidth) {
                 //approach the limit of width and move to next line
                 lineY += lineHeight;
                 lineUsed = 0;
+                lineX = mPaddingLeft;
                 lineHeight = 0;
             }
-            child.layout(lineUsed + mlp.leftMargin, lineY + mlp.topMargin, lineUsed + mlp.leftMargin + childWidth, lineY + mlp.topMargin + childHeight);
+            child.layout(lineX + mlp.leftMargin, lineY + mlp.topMargin, lineX + mlp.leftMargin + childWidth, lineY + mlp.topMargin + childHeight);
             if (spaceHeight > lineHeight) {
                 lineHeight = spaceHeight;
             }
-            lineUsed += mlp.leftMargin + childWidth + mlp.rightMargin;
+            lineUsed += spaceWidth;
+            lineX += spaceWidth;
 
         }
     }

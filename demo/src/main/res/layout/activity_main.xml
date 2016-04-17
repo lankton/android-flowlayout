@@ -9,6 +9,8 @@
         android:id="@+id/flowlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
         android:background="#212343">
         <View
             android:layout_width="60dp"
@@ -31,7 +33,7 @@
             android:layout_margin="10dp"
             android:background="#777777"/>
         <View
-            android:layout_width="60dp"
+            android:layout_width="50dp"
             android:layout_height="40dp"
             android:layout_margin="10dp"
             android:background="#777777"/>
