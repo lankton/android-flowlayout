@@ -35,7 +35,7 @@ public class FlowLayout extends ViewGroup {
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
-        int lineUsed = mPaddingLeft + mPaddingTop;
+        int lineUsed = mPaddingLeft + mPaddingRight;
         int lineY = mPaddingTop;
         int lineX = mPaddingLeft;
         int lineHeight = 0;
@@ -53,10 +53,9 @@ public class FlowLayout extends ViewGroup {
             if (lineUsed + spaceWidth > widthSize) {
                 //approach the limit of width and move to next line
                 lineY += lineHeight;
-                lineUsed = 0;
+                lineUsed = mPaddingLeft + mPaddingRight;
                 lineHeight = 0;
                 measureChildWithMargins(child, widthMeasureSpec, lineUsed, heightMeasureSpec, lineY);
-                childWidth = child.getMeasuredWidth();
                 childHeight = child.getMeasuredHeight();
                 spaceHeight = mlp.topMargin + childHeight + mlp.bottomMargin;
             }
@@ -96,7 +95,7 @@ public class FlowLayout extends ViewGroup {
             if (lineUsed + spaceWidth > lineWidth) {
                 //approach the limit of width and move to next line
                 lineY += lineHeight;
-                lineUsed = 0;
+                lineUsed = mPaddingLeft + mPaddingRight;
                 lineX = mPaddingLeft;
                 lineHeight = 0;
             }
