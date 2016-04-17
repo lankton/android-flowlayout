@@ -5,8 +5,9 @@
     android:layout_height="match_parent"
     tools:context="cn.lankton.lanflowlayout.MainActivity">
 
-    <cn.lankton.lanflowlayout.LanFlowLayout
-        android:layout_width="300dp"
+    <cn.lankton.flowlayout.FlowLayout
+        android:id="@+id/flowlayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#212343">
         <View
@@ -44,7 +45,37 @@
             android:layout_height="23dp"
             android:layout_margin="10dp"
             android:background="#777777"/>
-    </cn.lankton.lanflowlayout.LanFlowLayout>
+    </cn.lankton.flowlayout.FlowLayout>
 
-
+    <Button
+        android:id="@+id/btn_all_visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="all visible"
+        android:layout_alignParentBottom="true"/>
+    <Button
+        android:id="@+id/btn_add_random"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/btn_all_visible"
+        android:textAllCaps="false"
+        android:text="add random"
+        android:layout_alignParentBottom="true"/>
+    <Button
+        android:id="@+id/btn_remove_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/btn_add_random"
+        android:textAllCaps="false"
+        android:text="remove all"
+        android:layout_alignParentBottom="true"/>
+    <Button
+        android:id="@+id/btn_sort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/btn_remove_all"
+        android:textAllCaps="false"
+        android:text="sort"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

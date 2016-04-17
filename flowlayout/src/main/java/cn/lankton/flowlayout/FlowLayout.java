@@ -1,4 +1,4 @@
-package cn.lankton.lanflowlayout;
+package cn.lankton.flowlayout;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -9,17 +9,17 @@ import android.view.ViewGroup;
 /**
  * Created by taofangxin on 16/4/16.
  */
-public class LanFlowLayout extends ViewGroup {
+public class FlowLayout extends ViewGroup {
 
-    public LanFlowLayout(Context context) {
+    public FlowLayout(Context context) {
         super(context);
     }
 
-    public LanFlowLayout(Context context, AttributeSet attrs) {
+    public FlowLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public LanFlowLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public FlowLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
