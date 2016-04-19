@@ -11,6 +11,8 @@ import android.view.ViewGroup;
  */
 public class FlowLayout extends ViewGroup {
 
+    private int usefulWidth;
+
     public FlowLayout(Context context) {
         super(context);
     }
@@ -80,6 +82,7 @@ public class FlowLayout extends ViewGroup {
         int lineX = mPaddingLeft;
         int lineY = mPaddingTop;
         int lineWidth = r - l;
+        usefulWidth = lineWidth - mPaddingLeft - mPaddingRight;
         int lineUsed = mPaddingLeft + mPaddingRight;
         int lineHeight = 0;
         for (int i = 0; i < this.getChildCount(); i++) {
@@ -109,6 +112,56 @@ public class FlowLayout extends ViewGroup {
         }
     }
 
+    public void sort() {
+        int childCount = this.getChildCount();
+        if (0 == childCount) {
+            //no need to sort if flowlayout has no child view
+            return;
+        }
+        View[] childs = new View[childCount];
+        int[] spaces = new int[childCount];
+        for (int i = 0; i < childCount; i++) {
+            childs[i] = getChildAt(i);
+            MarginLayoutParams mlp = (MarginLayoutParams) childs[i].getLayoutParams();
+            int childWidth = childs[i].getMeasuredWidth();
+            spaces[i] = mlp.leftMargin + childWidth + mlp.rightMargin;
+        }
+        int[][] f = new int[childCount + 1][usefulWidth + 1];
+        for (int i = 0; i < childCount +1; i++) {
+            for (int j = 0; j < usefulWidth; j++) {
+                f[i][j] = 0;
+            }
+        }
+        int[][] path = new int[childCount][usefulWidth + 1];
+        boolean[] flag = new boolean[childCount];
+        for (int i = 0; i < childCount; i++) {
+            flag[i] = false;
+        }
+        for (int i = 1; i <= childCount; i++) {
+            for (int j = spaces[i-1]; j <= usefulWidth; j++) {
+                f[i][j] = (f[i-1][j] > f[i-1][j-spaces[i-1]] + spaces[i-1]) ? f[i-1][j] : f[i-1][j-spaces[i-1]] + spaces[i-1];
+//                if (f[i-1][j] > f[i-1][j-spaces[i-1]] + spaces[i-1]) {
+//                    f[i][j] = f[i-1][j];
+//                } else {
+//                    f[i][j] = f[i-1][j-spaces[i-1]] + spaces[i-1];
+//                    Log.v("lanktondebug", "" + i + ":" + spaces[i-1]);
+//                }
+            }
+        }
+        int v = usefulWidth;
+        for (int i = childCount ; i > 0 && v >= spaces[i-1]; i--) {
+                if (f[i][v] == f[i-1][v-spaces[i-1]] + spaces[i-1]) {
+                    flag[i-1] =  true;
+                    v = v - spaces[i - 1];
+                }
+        }
+        for (int i = 0; i < flag.length; i++) {
+            if (flag[i] == true) {
+                Log.v("lanktondebug", "" + i + ":" + spaces[i]);
+            }
+        }
+        Log.v("lanktondebug", "" + f[childCount][usefulWidth] + "/" + usefulWidth);
+    }
     @Override
     protected LayoutParams generateLayoutParams(LayoutParams p) {
         return new MarginLayoutParams(p);

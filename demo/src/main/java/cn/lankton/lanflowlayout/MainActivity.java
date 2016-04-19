@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 flowLayout.removeAllViews();
                 break;
             case R.id.btn_sort:
+                flowLayout.sort();
                 break;
             default:
                 v.setVisibility(View.GONE);
