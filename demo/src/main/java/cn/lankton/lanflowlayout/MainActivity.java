@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 flowLayout.removeAllViews();
                 break;
             case R.id.btn_relayout1:
-                flowLayout.relayoutToFill();
+                flowLayout.relayoutToCompress();
                 break;
             case R.id.btn_relayout2:
                 flowLayout.relayoutToAlign();

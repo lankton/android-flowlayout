@@ -16,7 +16,7 @@ import java.util.List;
 public class FlowLayout extends ViewGroup {
 
     private Context mContext;
-    private int usefulWidth;
+    private int usefulWidth; // the space of a line we can use(line's width minus the sum of left and right padding
     private int lineSpacing = 0; // the spacing between lines in flowlayout
     List<View> childList = new ArrayList();
 
@@ -125,7 +125,7 @@ public class FlowLayout extends ViewGroup {
     /**
      * resort child elements to use lines as few as possible
      */
-    public void relayoutToFill() {
+    public void relayoutToCompress() {
         int childCount = this.getChildCount();
         if (0 == childCount) {
             //no need to sort if flowlayout has no child view
@@ -155,7 +155,7 @@ public class FlowLayout extends ViewGroup {
             spaces[n] = mlp.leftMargin + childWidth + mlp.rightMargin;
             n++;
         }
-        sortToFill(childs, spaces);
+        sortToCompress(childs, spaces);
         this.removeAllViews();
         for (View v : childList) {
             this.addView(v);
@@ -163,7 +163,7 @@ public class FlowLayout extends ViewGroup {
         childList.clear();
     }
 
-    private void sortToFill(View[] childs, int[] spaces) {
+    private void sortToCompress(View[] childs, int[] spaces) {
         int childCount = childs.length;
         int[][] table = new int[childCount + 1][usefulWidth + 1];
         for (int i = 0; i < childCount +1; i++) {
@@ -213,7 +213,7 @@ public class FlowLayout extends ViewGroup {
         table = null;
         childs = null;
         flag = null;
-        sortToFill(restArray, restSpaces);
+        sortToCompress(restArray, restSpaces);
     }
 
     /**
@@ -280,10 +280,10 @@ public class FlowLayout extends ViewGroup {
     }
 
     /**
-     * you know what it is
+     * use both of relayout methods together
      */
     public void relayoutToFillAndAlign(){
-        this.relayoutToFill();
+        this.relayoutToCompress();
         this.relayoutToAlign();
     }
     @Override

@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/btn_remove_all"
         android:textAllCaps="false"
-        android:text="relayout_fill"
+        android:text="compress"
         android:layout_alignParentBottom="true"/>
     <Button
         android:id="@+id/btn_relayout2"
@@ -46,6 +46,6 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/btn_relayout1"
         android:textAllCaps="false"
-        android:text="relayou_align"
+        android:text="align"
         android:layout_alignParentBottom="true"/>
 </RelativeLayout>
