@@ -37,7 +37,7 @@ flowLayout.relayoutToAlign();
 ```
 The order of child elements **won't be changed**.
 ###Advisement###
-If you don't care the order of child elements, you can use relayoutToAlign after using relayoutToCompress, or you can use the method **relayoutToCompressAndAlign** directly.  
+If you don't care the order of child elements, you can use **relayoutToAlign** after using **relayoutToCompress**, or you can use the method **relayoutToCompressAndAlign** directly.  
 ```
 flowlayout.relayoutToCompressAndAlign();
 ```
