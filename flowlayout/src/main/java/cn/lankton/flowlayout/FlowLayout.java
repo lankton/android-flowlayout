@@ -6,12 +6,16 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by taofangxin on 16/4/16.
  */
 public class FlowLayout extends ViewGroup {
 
     private int usefulWidth;
+    List<View> childList = new ArrayList();
 
     public FlowLayout(Context context) {
         super(context);
@@ -112,7 +116,7 @@ public class FlowLayout extends ViewGroup {
         }
     }
 
-    public void sort() {
+    public void relayoutToFill() {
         int childCount = this.getChildCount();
         if (0 == childCount) {
             //no need to sort if flowlayout has no child view
@@ -126,41 +130,116 @@ public class FlowLayout extends ViewGroup {
             int childWidth = childs[i].getMeasuredWidth();
             spaces[i] = mlp.leftMargin + childWidth + mlp.rightMargin;
         }
-        int[][] f = new int[childCount + 1][usefulWidth + 1];
+        sortToFill(childs, spaces);
+        this.removeAllViews();
+        for (View v : childList) {
+            this.addView(v);
+        }
+        childList.clear();
+//        int[][] table = new int[childCount + 1][usefulWidth + 1];
+//        for (int i = 0; i < childCount +1; i++) {
+//            for (int j = 0; j < usefulWidth; j++) {
+//                table[i][j] = 0;
+//            }
+//        }
+//
+//        boolean[] flag = new boolean[childCount];
+//        for (int i = 0; i < childCount; i++) {
+//            flag[i] = false;
+//        }
+//        for (int i = 1; i <= childCount; i++) {
+//            for (int j = spaces[i-1]; j <= usefulWidth; j++) {
+//                table[i][j] = (table[i-1][j] > table[i-1][j-spaces[i-1]] + spaces[i-1]) ? table[i-1][j] : table[i-1][j-spaces[i-1]] + spaces[i-1];
+//            }
+//        }
+//        int v = usefulWidth;
+//        for (int i = childCount ; i > 0 && v >= spaces[i-1]; i--) {
+//                if (table[i][v] == table[i-1][v-spaces[i-1]] + spaces[i-1]) {
+//                    flag[i-1] =  true;
+//                    v = v - spaces[i - 1];
+//                }
+//        }
+//        for (int i = 0; i < flag.length; i++) {
+//            if (flag[i] == true) {
+//                if (childList.contains(childs[i]))
+//                Log.v("lanktondebug", "" + i + ":" + spaces[i]);
+//            }
+//        }
+//        int[] f = new int[usefulWidth + 1];
+//        for (int i = 0; i < usefulWidth + 1; i++) {
+//            table[i] = 0;
+//        }
+//        for (int i = 0; i < childCount; i++) {
+//            for (int j = usefulWidth; j >= spaces[i]; j--) {
+//                table[j] = (table[j] > table[j-spaces[i]] + spaces[i]) ? table[j] : table[j-spaces[i]] + spaces[i];
+//            }
+//        }
+//        int v = usefulWidth;
+//        for (int i = childCount ; i > 0 && v >= spaces[i-1]; i--) {
+//                if (table[v] == table[v-spaces[i-1]] + spaces[i-1]) {
+//                    flag[i-1] =  true;
+//                    v = v - spaces[i - 1];
+//                }
+//        }
+//        for (int i = 0; i < flag.length; i++) {
+//            if (flag[i] == true) {
+//                Log.v("lanktondebug", "" + i + ":" + spaces[i]);
+//            }
+//        }
+    }
+
+    private void sortToFill(View[] childs, int[] spaces) {
+        int childCount = childs.length;
+        int[][] table = new int[childCount + 1][usefulWidth + 1];
         for (int i = 0; i < childCount +1; i++) {
             for (int j = 0; j < usefulWidth; j++) {
-                f[i][j] = 0;
+                table[i][j] = 0;
             }
         }
-        int[][] path = new int[childCount][usefulWidth + 1];
         boolean[] flag = new boolean[childCount];
         for (int i = 0; i < childCount; i++) {
             flag[i] = false;
         }
         for (int i = 1; i <= childCount; i++) {
             for (int j = spaces[i-1]; j <= usefulWidth; j++) {
-                f[i][j] = (f[i-1][j] > f[i-1][j-spaces[i-1]] + spaces[i-1]) ? f[i-1][j] : f[i-1][j-spaces[i-1]] + spaces[i-1];
-//                if (f[i-1][j] > f[i-1][j-spaces[i-1]] + spaces[i-1]) {
-//                    f[i][j] = f[i-1][j];
-//                } else {
-//                    f[i][j] = f[i-1][j-spaces[i-1]] + spaces[i-1];
-//                    Log.v("lanktondebug", "" + i + ":" + spaces[i-1]);
-//                }
+                table[i][j] = (table[i-1][j] > table[i-1][j-spaces[i-1]] + spaces[i-1]) ? table[i-1][j] : table[i-1][j-spaces[i-1]] + spaces[i-1];
             }
         }
         int v = usefulWidth;
         for (int i = childCount ; i > 0 && v >= spaces[i-1]; i--) {
-                if (f[i][v] == f[i-1][v-spaces[i-1]] + spaces[i-1]) {
-                    flag[i-1] =  true;
-                    v = v - spaces[i - 1];
-                }
+            if (table[i][v] == table[i-1][v-spaces[i-1]] + spaces[i-1]) {
+                flag[i-1] =  true;
+                v = v - spaces[i - 1];
+            }
         }
+        int rest = childCount;
+        View[] restArray;
+        int[] restSpaces;
         for (int i = 0; i < flag.length; i++) {
             if (flag[i] == true) {
                 Log.v("lanktondebug", "" + i + ":" + spaces[i]);
+                childList.add(childs[i]);
+                rest--;
             }
         }
-        Log.v("lanktondebug", "" + f[childCount][usefulWidth] + "/" + usefulWidth);
+        Log.v("lanktondebug", "" + table[childCount][usefulWidth] + "/" + usefulWidth);
+        if (0 == rest) {
+            return;
+        }
+        restArray = new View[rest];
+        restSpaces = new int[rest];
+        int index = 0;
+        for (int i = 0; i < flag.length; i++) {
+            if (flag[i] == false) {
+                restArray[index] = childs[i];
+                restSpaces[index] = spaces[i];
+                index++;
+            }
+        }
+        table = null;
+        childs = null;
+        flag = null;
+        sortToFill(restArray, restSpaces);
     }
     @Override
     protected LayoutParams generateLayoutParams(LayoutParams p) {

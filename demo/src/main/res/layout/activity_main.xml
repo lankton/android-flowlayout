@@ -12,41 +12,6 @@
         android:paddingLeft="20dp"
         android:paddingTop="20dp"
         android:background="#212343">
-        <View
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:background="#777777"/>
-        <View
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_margin="10dp"
-            android:background="#777777"/>
-        <View
-            android:layout_width="30dp"
-            android:layout_height="70dp"
-            android:layout_margin="10dp"
-            android:background="#777777"/>
-        <View
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:background="#777777"/>
-        <View
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:background="#777777"/>
-        <View
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:background="#777777"/>
-        <View
-            android:layout_width="49dp"
-            android:layout_height="23dp"
-            android:layout_margin="10dp"
-            android:background="#777777"/>
     </cn.lankton.flowlayout.FlowLayout>
 
     <Button

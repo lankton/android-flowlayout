@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_add_random:
                 int ranWidth = dip2px(this, 20 + (int) (80 * Math.random()));
-                int ranHeight = dip2px(this, 20 + (int) (15 * Math.random()));
+                int ranHeight = dip2px(this, 30);
                 ViewGroup.MarginLayoutParams lp = new ViewGroup.MarginLayoutParams(ranWidth, ranHeight);
                 lp.setMargins(dip2px(this, 10), dip2px(this, 10), dip2px(this, 10), dip2px(this, 10));
                 View view = new View(this);
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 flowLayout.removeAllViews();
                 break;
             case R.id.btn_sort:
-                flowLayout.sort();
+                flowLayout.relayoutToFill();
                 break;
             default:
                 v.setVisibility(View.GONE);
