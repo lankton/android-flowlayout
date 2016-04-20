@@ -3,7 +3,6 @@ package cn.lankton.flowlayout;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -67,9 +66,6 @@ public class FlowLayout extends ViewGroup {
                 lineY += lineHeight + lineSpacing;
                 lineUsed = mPaddingLeft + mPaddingRight;
                 lineHeight = 0;
-                measureChildWithMargins(child, widthMeasureSpec, lineUsed, heightMeasureSpec, lineY);
-                childHeight = child.getMeasuredHeight();
-                spaceHeight = mlp.topMargin + childHeight + mlp.bottomMargin;
             }
             if (spaceHeight > lineHeight) {
                 lineHeight = spaceHeight;
@@ -103,7 +99,6 @@ public class FlowLayout extends ViewGroup {
             int childWidth = child.getMeasuredWidth();
             int childHeight = child.getMeasuredHeight();
             int spaceWidth = mlp.leftMargin + childWidth + mlp.rightMargin;
-            Log.v("lanktondebug", ""+spaceWidth);
             int spaceHeight = mlp.topMargin + childHeight + mlp.bottomMargin;
             if (lineUsed + spaceWidth > lineWidth) {
                 //approach the limit of width and move to next line
