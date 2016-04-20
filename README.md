@@ -42,4 +42,4 @@ If you don't care the order of child elements, you can use relayoutToAlign after
 flowlayout.relayoutToFillAndAlign();
 ```
 ##summary##
-I like my FlowLayout, and may it help you. Thanks.
+May this FlowLayout help you. Thanks.
