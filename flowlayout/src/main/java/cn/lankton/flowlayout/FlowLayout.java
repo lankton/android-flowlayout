@@ -277,7 +277,7 @@ public class FlowLayout extends ViewGroup {
     /**
      * use both of relayout methods together
      */
-    public void relayoutToFillAndAlign(){
+    public void relayoutToCompressAndAlign(){
         this.relayoutToCompress();
         this.relayoutToAlign();
     }
