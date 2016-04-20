@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context="cn.lankton.lanflowlayout.MainActivity">
 
     <cn.lankton.flowlayout.FlowLayout
         android:id="@+id/flowlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        android:background="#212343">
+        android:padding="10dp"
+        app:lineSpacing="10dp"
+        android:background="#F0F0F0">
+
     </cn.lankton.flowlayout.FlowLayout>
 
-    <Button
-        android:id="@+id/btn_all_visible"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="all visible"
-        android:layout_alignParentBottom="true"/>
     <Button
         android:id="@+id/btn_add_random"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/btn_all_visible"
         android:textAllCaps="false"
-        android:text="add random"
+        android:text="add"
         android:layout_alignParentBottom="true"/>
     <Button
         android:id="@+id/btn_remove_all"
@@ -35,14 +30,22 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/btn_add_random"
         android:textAllCaps="false"
-        android:text="remove all"
+        android:text="clean"
         android:layout_alignParentBottom="true"/>
     <Button
-        android:id="@+id/btn_sort"
+        android:id="@+id/btn_relayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/btn_remove_all"
         android:textAllCaps="false"
-        android:text="sort"
+        android:text="relayout_fill"
+        android:layout_alignParentBottom="true"/>
+    <Button
+        android:id="@+id/btn_relayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/btn_relayout1"
+        android:textAllCaps="false"
+        android:text="relayou_align"
         android:layout_alignParentBottom="true"/>
 </RelativeLayout>
