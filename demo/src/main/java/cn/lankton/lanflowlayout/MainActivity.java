@@ -50,8 +50,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 int index = (int)(Math.random() * length);
                 tv.setText(texts[index]);
                 tv.setGravity(Gravity.CENTER_VERTICAL);
-//                tv.setSingleLine();
                 tv.setBackgroundResource(R.drawable.bg_tag);
+//                flowLayout.addView(tv);
+//                flowLayout.addView(tv, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                 flowLayout.addView(tv, lp);
                 break;
             case R.id.btn_remove_all:

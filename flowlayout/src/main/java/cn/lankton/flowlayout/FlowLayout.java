@@ -2,7 +2,9 @@ package cn.lankton.flowlayout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.text.Layout;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -55,12 +57,23 @@ public class FlowLayout extends ViewGroup {
             if (child.getVisibility() == GONE) {
                 continue;
             }
-            measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, lineY);
-            MarginLayoutParams mlp = (MarginLayoutParams) child.getLayoutParams();
+            int spaceWidth = 0;
+            int spaceHeight = 0;
+            LayoutParams childLp = child.getLayoutParams();
+            if (childLp instanceof MarginLayoutParams) {
+                measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, lineY);
+                MarginLayoutParams mlp = (MarginLayoutParams) childLp;
+                spaceWidth = mlp.leftMargin + mlp.rightMargin;
+                spaceHeight = mlp.topMargin + mlp.bottomMargin;
+            } else {
+                measureChild(child, widthMeasureSpec, heightMeasureSpec);
+            }
+
             int childWidth = child.getMeasuredWidth();
             int childHeight = child.getMeasuredHeight();
-            int spaceWidth = mlp.leftMargin + childWidth + mlp.rightMargin;
-            int spaceHeight = mlp.topMargin + childHeight + mlp.bottomMargin;
+            spaceWidth += childWidth;
+            spaceHeight += childHeight;
+
             if (lineUsed + spaceWidth > widthSize) {
                 //approach the limit of width and move to next line
                 lineY += lineHeight + lineSpacing;
@@ -95,19 +108,54 @@ public class FlowLayout extends ViewGroup {
             if (child.getVisibility() == GONE) {
                 continue;
             }
-            MarginLayoutParams mlp = (MarginLayoutParams) child.getLayoutParams();
+            int spaceWidth = 0;
+            int spaceHeight = 0;
+            int left = 0;
+            int top = 0;
+            int right = 0;
+            int bottom = 0;
             int childWidth = child.getMeasuredWidth();
             int childHeight = child.getMeasuredHeight();
-            int spaceWidth = mlp.leftMargin + childWidth + mlp.rightMargin;
-            int spaceHeight = mlp.topMargin + childHeight + mlp.bottomMargin;
+
+            LayoutParams childLp = child.getLayoutParams();
+            if (childLp instanceof MarginLayoutParams) {
+                MarginLayoutParams mlp = (MarginLayoutParams) childLp;
+                spaceWidth = mlp.leftMargin + mlp.rightMargin;
+                spaceHeight = mlp.topMargin + mlp.bottomMargin;
+                left = lineX + mlp.leftMargin;
+                top = lineY + mlp.topMargin;
+                right = lineX + mlp.leftMargin + childWidth;
+                bottom = lineY + mlp.topMargin + childHeight;
+            } else {
+                left = lineX;
+                top = lineY;
+                right = lineX + childWidth;
+                bottom = lineY + childHeight;
+            }
+            spaceWidth += childWidth;
+            spaceHeight += childHeight;
+
             if (lineUsed + spaceWidth > lineWidth) {
                 //approach the limit of width and move to next line
+
                 lineY += lineHeight + lineSpacing;
                 lineUsed = mPaddingLeft + mPaddingRight;
                 lineX = mPaddingLeft;
                 lineHeight = 0;
+                if (childLp instanceof MarginLayoutParams) {
+                    MarginLayoutParams mlp = (MarginLayoutParams) childLp;
+                    left = lineX + mlp.leftMargin;
+                    top = lineY + mlp.topMargin;
+                    right = lineX + mlp.leftMargin + childWidth;
+                    bottom = lineY + mlp.topMargin + childHeight;
+                } else {
+                    left = lineX;
+                    top = lineY;
+                    right = lineX + childWidth;
+                    bottom = lineY + childHeight;
+                }
             }
-            child.layout(lineX + mlp.leftMargin, lineY + mlp.topMargin, lineX + mlp.leftMargin + childWidth, lineY + mlp.topMargin + childHeight);
+            child.layout(left, top, right, bottom);
             if (spaceHeight > lineHeight) {
                 lineHeight = spaceHeight;
             }
@@ -145,9 +193,14 @@ public class FlowLayout extends ViewGroup {
                 continue;
             }
             childs[n] = v;
-            MarginLayoutParams mlp = (MarginLayoutParams) v.getLayoutParams();
+            LayoutParams childLp = v.getLayoutParams();
             int childWidth = v.getMeasuredWidth();
-            spaces[n] = mlp.leftMargin + childWidth + mlp.rightMargin;
+            if (childLp instanceof MarginLayoutParams) {
+                MarginLayoutParams mlp = (MarginLayoutParams) childLp ;
+                spaces[n] = mlp.leftMargin + childWidth + mlp.rightMargin;
+            } else {
+                spaces[n] = childWidth;
+            }
             n++;
         }
         sortToCompress(childs, spaces);
@@ -239,9 +292,14 @@ public class FlowLayout extends ViewGroup {
                 continue;
             }
             childs[n] = v;
-            MarginLayoutParams mlp = (MarginLayoutParams) v.getLayoutParams();
+            LayoutParams childLp = v.getLayoutParams();
             int childWidth = v.getMeasuredWidth();
-            spaces[n] = mlp.leftMargin + childWidth + mlp.rightMargin;
+            if (childLp instanceof MarginLayoutParams) {
+                MarginLayoutParams mlp = (MarginLayoutParams) childLp ;
+                spaces[n] = mlp.leftMargin + childWidth + mlp.rightMargin;
+            } else {
+                spaces[n] = childWidth;
+            }
             n++;
         }
         int lineTotal = 0;
@@ -290,6 +348,11 @@ public class FlowLayout extends ViewGroup {
     public LayoutParams generateLayoutParams(AttributeSet attrs)
     {
         return new MarginLayoutParams(getContext(), attrs);
+    }
+
+    @Override
+    protected LayoutParams generateDefaultLayoutParams() {
+        return new MarginLayoutParams(super.generateDefaultLayoutParams());
     }
 
     class BlankView extends View {
