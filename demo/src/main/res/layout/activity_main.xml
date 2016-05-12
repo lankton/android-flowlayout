@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     tools:context="cn.lankton.lanflowlayout.MainActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <cn.lankton.flowlayout.FlowLayout
         android:id="@+id/flowlayout"
@@ -16,6 +19,7 @@
         android:background="#F0F0F0">
 
     </cn.lankton.flowlayout.FlowLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/btn_add_random"
