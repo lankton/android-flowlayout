@@ -10,10 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d183d77e-87f7-4d76-861c-4ac3478d5066" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/demo/src/main/res/layout/activity_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flowlayout/flowlayout.iml" afterPath="$PROJECT_DIR$/flowlayout/flowlayout.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/src/main/java/cn/lankton/lanflowlayout/MainActivity.java" afterPath="$PROJECT_DIR$/demo/src/main/java/cn/lankton/lanflowlayout/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flowlayout/src/main/java/cn/lankton/flowlayout/FlowLayout.java" afterPath="$PROJECT_DIR$/flowlayout/src/main/java/cn/lankton/flowlayout/FlowLayout.java" />
     </list>
     <ignored path="LanFlowLayout.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,25 +46,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo/src/main/java/cn/lankton/lanflowlayout/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.1863354">
-              <caret line="21" column="55" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FlowLayout.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FlowLayout.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flowlayout/src/main/java/cn/lankton/flowlayout/FlowLayout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="339" column="31" selection-start-line="339" selection-start-column="31" selection-end-line="339" selection-end-column="31" />
+            <state vertical-scroll-proportion="-0.15397082">
+              <caret line="100" column="32" selection-start-line="100" selection-start-column="32" selection-end-line="100" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#696#697#0" expanded="true" />
                 <element signature="e#731#732#0" expanded="true" />
+                <element signature="e#793#794#0" expanded="true" />
+                <element signature="e#832#833#0" expanded="true" />
+                <element signature="e#13274#13275#0" expanded="true" />
+                <element signature="e#13312#13313#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2432,8 +2437,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/flowlayout/src/main/java/cn/lankton/flowlayout/FlowLayout.java" />
         <option value="$PROJECT_DIR$/demo/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/flowlayout/src/main/java/cn/lankton/flowlayout/FlowLayout.java" />
         <option value="$PROJECT_DIR$/demo/src/main/java/cn/lankton/lanflowlayout/MainActivity.java" />
       </list>
     </option>
@@ -3140,7 +3145,13 @@
       <option name="project" value="LOCAL" />
       <updated>1462361941302</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="modify demo">
+      <created>1463038684696</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1463038684696</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -3240,7 +3251,8 @@
     <MESSAGE value="sync project with remote" />
     <MESSAGE value="update gitignore" />
     <MESSAGE value="fix bug :&#10;use addView without MarginLayoutParam may cause casting exception" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug :&#10;use addView without MarginLayoutParam may cause casting exception" />
+    <MESSAGE value="modify demo" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify demo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3257,6 +3269,10 @@
             <element signature="imports" expanded="true" />
             <element signature="e#696#697#0" expanded="true" />
             <element signature="e#731#732#0" expanded="true" />
+            <element signature="e#793#794#0" expanded="true" />
+            <element signature="e#832#833#0" expanded="true" />
+            <element signature="e#13274#13275#0" expanded="true" />
+            <element signature="e#13312#13313#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3292,7 +3308,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="52" column="34" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3305,6 +3321,10 @@
             <element signature="imports" expanded="true" />
             <element signature="e#696#697#0" expanded="true" />
             <element signature="e#731#732#0" expanded="true" />
+            <element signature="e#793#794#0" expanded="true" />
+            <element signature="e#832#833#0" expanded="true" />
+            <element signature="e#13274#13275#0" expanded="true" />
+            <element signature="e#13312#13313#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3340,7 +3360,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3380,7 +3400,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3420,7 +3440,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3449,7 +3469,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="42" column="63" selection-start-line="42" selection-start-column="63" selection-end-line="42" selection-end-column="63" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3462,6 +3482,10 @@
             <element signature="imports" expanded="true" />
             <element signature="e#696#697#0" expanded="true" />
             <element signature="e#731#732#0" expanded="true" />
+            <element signature="e#793#794#0" expanded="true" />
+            <element signature="e#832#833#0" expanded="true" />
+            <element signature="e#13274#13275#0" expanded="true" />
+            <element signature="e#13312#13313#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3490,7 +3514,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="67" selection-start-line="25" selection-start-column="67" selection-end-line="25" selection-end-column="67" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3503,6 +3527,10 @@
             <element signature="imports" expanded="true" />
             <element signature="e#696#697#0" expanded="true" />
             <element signature="e#731#732#0" expanded="true" />
+            <element signature="e#793#794#0" expanded="true" />
+            <element signature="e#832#833#0" expanded="true" />
+            <element signature="e#13274#13275#0" expanded="true" />
+            <element signature="e#13312#13313#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3528,7 +3556,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="67" selection-start-line="25" selection-start-column="67" selection-end-line="25" selection-end-column="67" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3541,6 +3569,10 @@
             <element signature="imports" expanded="true" />
             <element signature="e#696#697#0" expanded="true" />
             <element signature="e#731#732#0" expanded="true" />
+            <element signature="e#793#794#0" expanded="true" />
+            <element signature="e#832#833#0" expanded="true" />
+            <element signature="e#13274#13275#0" expanded="true" />
+            <element signature="e#13312#13313#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3580,7 +3612,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3703,23 +3735,29 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flowlayout/src/main/java/cn/lankton/flowlayout/FlowLayout.java">
+    <entry file="file://$PROJECT_DIR$/demo/src/main/java/cn/lankton/lanflowlayout/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="339" column="31" selection-start-line="339" selection-start-column="31" selection-end-line="339" selection-end-column="31" />
+          <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#696#697#0" expanded="true" />
-            <element signature="e#731#732#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo/src/main/java/cn/lankton/lanflowlayout/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/flowlayout/src/main/java/cn/lankton/flowlayout/FlowLayout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1863354">
-          <caret line="21" column="55" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
-          <folding />
+        <state vertical-scroll-proportion="-0.15397082">
+          <caret line="100" column="32" selection-start-line="100" selection-start-column="32" selection-end-line="100" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#696#697#0" expanded="true" />
+            <element signature="e#731#732#0" expanded="true" />
+            <element signature="e#793#794#0" expanded="true" />
+            <element signature="e#832#833#0" expanded="true" />
+            <element signature="e#13274#13275#0" expanded="true" />
+            <element signature="e#13312#13313#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

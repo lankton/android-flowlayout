@@ -203,7 +203,11 @@ public class FlowLayout extends ViewGroup {
             }
             n++;
         }
-        sortToCompress(childs, spaces);
+        int[] compressSpaces = new int[count];
+        for (int i = 0; i < count; i++) {
+            compressSpaces[i] = spaces[i] > usefulWidth ? usefulWidth : spaces[i];
+        }
+        sortToCompress(childs, compressSpaces);
         this.removeAllViews();
         for (View v : childList) {
             this.addView(v);
@@ -310,17 +314,23 @@ public class FlowLayout extends ViewGroup {
                 int blankWidth = usefulWidth - lineTotal;
                 int end = i - 1;
                 int blankCount = end - start;
-                if (blankCount > 0) {
-                    int eachBlankWidth = blankWidth / blankCount;
-                    MarginLayoutParams lp = new MarginLayoutParams(eachBlankWidth, 0);
-                    for (int j = start; j < end; j++) {
-                        this.addView(childs[j]);
-                        BlankView blank = new BlankView(mContext);
-                        this.addView(blank, lp);
+                if (blankCount >= 0) {
+                    if (blankCount > 0) {
+                        int eachBlankWidth = blankWidth / blankCount;
+                        MarginLayoutParams lp = new MarginLayoutParams(eachBlankWidth, 0);
+                        for (int j = start; j < end; j++) {
+                            this.addView(childs[j]);
+                            BlankView blank = new BlankView(mContext);
+                            this.addView(blank, lp);
+                        }
                     }
                     this.addView(childs[end]);
                     start = i;
                     i --;
+                    lineTotal = 0;
+                } else {
+                    this.addView(childs[i]);
+                    start = i + 1;
                     lineTotal = 0;
                 }
             } else {

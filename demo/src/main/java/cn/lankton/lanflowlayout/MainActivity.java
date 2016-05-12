@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.btn_add_random:
                 int ranHeight = dip2px(this, 30);
+                int ranWidth = 20 + (int) (Math.random() * 1200);
                 ViewGroup.MarginLayoutParams lp = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ranHeight);
                 lp.setMargins(dip2px(this, 10), 0, dip2px(this, 10), 0);
                 TextView tv = new TextView(this);
@@ -50,9 +51,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 int index = (int)(Math.random() * length);
                 tv.setText(texts[index]);
                 tv.setGravity(Gravity.CENTER_VERTICAL);
+                tv.setLines(1);
                 tv.setBackgroundResource(R.drawable.bg_tag);
-//                flowLayout.addView(tv);
-//                flowLayout.addView(tv, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                 flowLayout.addView(tv, lp);
                 break;
             case R.id.btn_remove_all:
