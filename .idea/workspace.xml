@@ -10,13 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d183d77e-87f7-4d76-861c-4ac3478d5066" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Configuring" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/demo.iml" afterPath="$PROJECT_DIR$/demo/demo.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/src/main/java/cn/lankton/lanflowlayout/MainActivity.java" afterPath="$PROJECT_DIR$/demo/src/main/java/cn/lankton/lanflowlayout/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/demo/src/main/res/layout/activity_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flowlayout/flowlayout.iml" afterPath="$PROJECT_DIR$/flowlayout/flowlayout.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flowlayout/src/main/java/cn/lankton/flowlayout/FlowLayout.java" afterPath="$PROJECT_DIR$/flowlayout/src/main/java/cn/lankton/flowlayout/FlowLayout.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flowlayout/src/main/res/values/attrs.xml" afterPath="$PROJECT_DIR$/flowlayout/src/main/res/values/attrs.xml" />
     </list>
     <ignored path="LanFlowLayout.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,8 +58,8 @@
       <file leaf-file-name="FlowLayout.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flowlayout/src/main/java/cn/lankton/flowlayout/FlowLayout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30570903">
-              <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.33333334">
+              <caret line="106" column="28" selection-start-line="106" selection-start-column="28" selection-end-line="106" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#692#693#0" expanded="true" />
@@ -3451,7 +3446,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463657873246</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="add a method to cut the layout to the specified number of lines">
+      <created>1463755961983</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1463755961983</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -3554,7 +3555,8 @@
     <MESSAGE value="modify demo" />
     <MESSAGE value="fix bug : stack overflow would happen when compressing if a child is longer than a line" />
     <MESSAGE value="publish to jcenter" />
-    <option name="LAST_COMMIT_MESSAGE" value="publish to jcenter" />
+    <MESSAGE value="add a method to cut the layout to the specified number of lines" />
+    <option name="LAST_COMMIT_MESSAGE" value="add a method to cut the layout to the specified number of lines" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -4020,8 +4022,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/flowlayout/src/main/java/cn/lankton/flowlayout/FlowLayout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30570903">
-          <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="106" column="28" selection-start-line="106" selection-start-column="28" selection-end-line="106" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#692#693#0" expanded="true" />
