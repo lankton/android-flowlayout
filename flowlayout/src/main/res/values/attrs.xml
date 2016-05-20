@@ -2,5 +2,6 @@
 <resources>
     <declare-styleable name="FlowLayout">
         <attr name="lineSpacing" format="dimension" />
+        <attr name="maxLine" format="integer" />
     </declare-styleable>
 </resources>

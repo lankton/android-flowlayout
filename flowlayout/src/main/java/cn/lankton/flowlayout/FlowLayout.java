@@ -2,9 +2,7 @@ package cn.lankton.flowlayout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.text.Layout;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -20,6 +18,7 @@ public class FlowLayout extends ViewGroup {
     private int usefulWidth; // the space of a line we can use(line's width minus the sum of left and right padding
     private int lineSpacing = 0; // the spacing between lines in flowlayout
     List<View> childList = new ArrayList();
+    List<Integer> lineNumList = new ArrayList();
 
     public FlowLayout(Context context) {
         this(context, null);
@@ -103,6 +102,9 @@ public class FlowLayout extends ViewGroup {
         usefulWidth = lineWidth - mPaddingLeft - mPaddingRight;
         int lineUsed = mPaddingLeft + mPaddingRight;
         int lineHeight = 0;
+        int lineNum = 0;
+
+        lineNumList.clear();
         for (int i = 0; i < this.getChildCount(); i++) {
             View child = this.getChildAt(i);
             if (child.getVisibility() == GONE) {
@@ -137,11 +139,12 @@ public class FlowLayout extends ViewGroup {
 
             if (lineUsed + spaceWidth > lineWidth) {
                 //approach the limit of width and move to next line
-
+                lineNumList.add(lineNum);
                 lineY += lineHeight + lineSpacing;
                 lineUsed = mPaddingLeft + mPaddingRight;
                 lineX = mPaddingLeft;
                 lineHeight = 0;
+                lineNum = 0;
                 if (childLp instanceof MarginLayoutParams) {
                     MarginLayoutParams mlp = (MarginLayoutParams) childLp;
                     left = lineX + mlp.leftMargin;
@@ -156,13 +159,15 @@ public class FlowLayout extends ViewGroup {
                 }
             }
             child.layout(left, top, right, bottom);
+            lineNum ++;
             if (spaceHeight > lineHeight) {
                 lineHeight = spaceHeight;
             }
             lineUsed += spaceWidth;
             lineX += spaceWidth;
-
         }
+        // add the num of last line
+        lineNumList.add(lineNum);
     }
 
     /**
@@ -348,6 +353,28 @@ public class FlowLayout extends ViewGroup {
     public void relayoutToCompressAndAlign(){
         this.relayoutToCompress();
         this.relayoutToAlign();
+    }
+
+    /**
+     * cut the flowlayout to the specified num of lines
+     * @param line_num
+     */
+    public void specifyLines(int line_num) {
+        int childNum = 0;
+        if (line_num > lineNumList.size()) {
+            line_num = lineNumList.size();
+        }
+        for (int i = 0; i < line_num; i++) {
+            childNum += lineNumList.get(i);
+        }
+        List<View> viewList = new ArrayList<>();
+        for (int i = 0; i < childNum; i++) {
+            viewList.add(getChildAt(i));
+        }
+        removeAllViews();
+        for (View v : viewList) {
+            addView(v);
+        }
     }
     @Override
     protected LayoutParams generateLayoutParams(LayoutParams p) {

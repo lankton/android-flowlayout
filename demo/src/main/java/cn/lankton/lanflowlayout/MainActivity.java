@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_relayout1).setOnClickListener(this);
         findViewById(R.id.btn_remove_all).setOnClickListener(this);
         findViewById(R.id.btn_relayout2).setOnClickListener(this);
+        findViewById(R.id.btn_specify_line).setOnClickListener(this);
     }
 
     @Override
@@ -41,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.btn_add_random:
                 int ranHeight = dip2px(this, 30);
-                int ranWidth = 20 + (int) (Math.random() * 1200);
                 ViewGroup.MarginLayoutParams lp = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ranHeight);
                 lp.setMargins(dip2px(this, 10), 0, dip2px(this, 10), 0);
                 TextView tv = new TextView(this);
@@ -63,6 +63,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_relayout2:
                 flowLayout.relayoutToAlign();
+                break;
+            case R.id.btn_specify_line:
+                flowLayout.specifyLines(3);
                 break;
             default:
                 break;
