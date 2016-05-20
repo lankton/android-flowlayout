@@ -1,6 +1,22 @@
+[ ![Download](https://api.bintray.com/packages/lankton/maven/flowlayout/images/download.svg) ](https://bintray.com/lankton/maven/flowlayout/_latestVersion)
+
 # android-flowlayout
 A very convenient and powerful flow layout created by Lan.
 
+##Dependencies##
+###gradle###
+```
+compile 'cn.lankton:flowlayout:1.0.0'
+```
+###maven###
+```
+<dependency>
+  <groupId>cn.lankton</groupId>
+  <artifactId>flowlayout</artifactId>
+  <version>1.0.0</version>
+  <type>pom</type>
+</dependency>
+```
 ##Effect##
 <img src="https://github.com/lankton/android-flowlayout/blob/master/pictures/flowlayout_add.gif?raw=true" width="260px"/>
 <img src="https://github.com/lankton/android-flowlayout/blob/master/pictures/flowlayout_compress.gif?raw=true" width="260px"/>
