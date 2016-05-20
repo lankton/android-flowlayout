@@ -29,7 +29,7 @@ publish {
     userOrg = 'lankton'
     groupId = 'cn.lankton'
     artifactId = 'flowlayout'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.1'
     desc = 'A very convenient and powerful flow layout. '
     website = 'https://github.com/lankton/android-flowlayout'
 }
