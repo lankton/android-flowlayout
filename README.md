@@ -3,17 +3,22 @@
 # android-flowlayout
 A very convenient and powerful flow layout created by Lan.
 
-##Dependencies##
-###gradle###
+## minSdkVersion
+11
+
+## Dependencies
+### latest version
+see it as an icon in the beginning of the README file.
+### gradle
 ```
-compile 'cn.lankton:flowlayout:1.0.1'
+compile 'cn.lankton:flowlayout:latest version'
 ```
-###maven###
+### maven
 ```
 <dependency>
   <groupId>cn.lankton</groupId>
   <artifactId>flowlayout</artifactId>
-  <version>1.0.1</version>
+  <version>latest version</version>
   <type>pom</type>
 </dependency>
 ```
