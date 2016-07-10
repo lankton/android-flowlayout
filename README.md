@@ -6,14 +6,14 @@ A very convenient and powerful flow layout created by Lan.
 ##Dependencies##
 ###gradle###
 ```
-compile 'cn.lankton:flowlayout:1.0.0'
+compile 'cn.lankton:flowlayout:1.0.1'
 ```
 ###maven###
 ```
 <dependency>
   <groupId>cn.lankton</groupId>
   <artifactId>flowlayout</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <type>pom</type>
 </dependency>
 ```
@@ -25,6 +25,9 @@ compile 'cn.lankton:flowlayout:1.0.0'
 **pic middle**: **compress** child elements to make them spend lines as fiew as possible and look tight   
 **pic right**: **align** child elements to make them look in alignment.  
 
+<img src="https://github.com/lankton/android-flowlayout/blob/master/pictures/flowlayout_specify.gif?raw=true" width="260px"/> 
+
+This pic shows to cut the flowlayout to the specified number of lines.
 ##Usage##
 ###normal usage like other flow layouts###
 You can use this FlowLayout like below in your layout file
@@ -52,10 +55,10 @@ When you want to align child elements, use the code like below:
 flowLayout.relayoutToAlign();
 ```
 The order of child elements **won't be changed**.
-###Advisement###
-If you don't care the order of child elements, you can use **relayoutToAlign** after using **relayoutToCompress**, or you can use the method **relayoutToCompressAndAlign** directly.  
+###cut###
+You can cut the flowlayout to the specified number of lines.
 ```
-flowlayout.relayoutToCompressAndAlign();
+flowLayout.specifyLines(int)
 ```
 ##summary##
 May this FlowLayout help you. Thanks.
