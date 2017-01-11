@@ -174,6 +174,14 @@ public class FlowLayout extends ViewGroup {
      * resort child elements to use lines as few as possible
      */
     public void relayoutToCompress() {
+        post(new Runnable() {
+            @Override
+            public void run() {
+                compress();
+            }
+        });
+    }
+    private void compress() {
         int childCount = this.getChildCount();
         if (0 == childCount) {
             //no need to sort if flowlayout has no child view
@@ -277,6 +285,15 @@ public class FlowLayout extends ViewGroup {
      * add some blank view to make child elements look in alignment
      */
     public void relayoutToAlign() {
+        post(new Runnable() {
+            @Override
+            public void run() {
+                align();
+            }
+        });
+    }
+
+    private void align() {
         int childCount = this.getChildCount();
         if (0 == childCount) {
             //no need to sort if flowlayout has no child view
@@ -351,30 +368,41 @@ public class FlowLayout extends ViewGroup {
      * use both of relayout methods together
      */
     public void relayoutToCompressAndAlign(){
-        this.relayoutToCompress();
-        this.relayoutToAlign();
+        post(new Runnable() {
+            @Override
+            public void run() {
+                compress();
+                align();
+            }
+        });
     }
 
     /**
      * cut the flowlayout to the specified num of lines
-     * @param line_num
+     * @param line_num_now
      */
-    public void specifyLines(int line_num) {
-        int childNum = 0;
-        if (line_num > lineNumList.size()) {
-            line_num = lineNumList.size();
-        }
-        for (int i = 0; i < line_num; i++) {
-            childNum += lineNumList.get(i);
-        }
-        List<View> viewList = new ArrayList<>();
-        for (int i = 0; i < childNum; i++) {
-            viewList.add(getChildAt(i));
-        }
-        removeAllViews();
-        for (View v : viewList) {
-            addView(v);
-        }
+    public void specifyLines(final int line_num_now) {
+        post(new Runnable() {
+            @Override
+            public void run() {
+                int line_num = line_num_now;
+                int childNum = 0;
+                if (line_num > lineNumList.size()) {
+                    line_num = lineNumList.size();
+                }
+                for (int i = 0; i < line_num; i++) {
+                    childNum += lineNumList.get(i);
+                }
+                List<View> viewList = new ArrayList<>();
+                for (int i = 0; i < childNum; i++) {
+                    viewList.add(getChildAt(i));
+                }
+                removeAllViews();
+                for (View v : viewList) {
+                    addView(v);
+                }
+            }
+        });
     }
     @Override
     protected LayoutParams generateLayoutParams(LayoutParams p) {
