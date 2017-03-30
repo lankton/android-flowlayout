@@ -22,7 +22,8 @@ compile 'cn.lankton:flowlayout:latest version'
   <type>pom</type>
 </dependency>
 ```
-##Effect##
+## Effect
+e
 <img src="https://github.com/lankton/android-flowlayout/blob/master/pictures/flowlayout_add.gif?raw=true" width="260px"/>
 <img src="https://github.com/lankton/android-flowlayout/blob/master/pictures/flowlayout_compress.gif?raw=true" width="260px"/>
 <img src="https://github.com/lankton/android-flowlayout/blob/master/pictures/flowlayout_align.gif?raw=true" width="260px"/>   
@@ -34,7 +35,7 @@ compile 'cn.lankton:flowlayout:latest version'
 
 This pic shows to cut the flowlayout to the specified number of lines.
 ## Usage
-###normal usage like other flow layouts###
+### normal usage like other flow layouts
 You can use this FlowLayout like below in your layout file
 ```xml
 <cn.lankton.flowlayout.FlowLayout
