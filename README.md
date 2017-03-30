@@ -22,7 +22,7 @@ compile 'cn.lankton:flowlayout:latest version'
   <type>pom</type>
 </dependency>
 ```
-##Effect##
+## Effect
 <img src="https://github.com/lankton/android-flowlayout/blob/master/pictures/flowlayout_add.gif?raw=true" width="260px"/>
 <img src="https://github.com/lankton/android-flowlayout/blob/master/pictures/flowlayout_compress.gif?raw=true" width="260px"/>
 <img src="https://github.com/lankton/android-flowlayout/blob/master/pictures/flowlayout_align.gif?raw=true" width="260px"/>   
@@ -33,8 +33,8 @@ compile 'cn.lankton:flowlayout:latest version'
 <img src="https://github.com/lankton/android-flowlayout/blob/master/pictures/flowlayout_specify.gif?raw=true" width="260px"/> 
 
 This pic shows to cut the flowlayout to the specified number of lines.
-##Usage##
-###normal usage like other flow layouts###
+## Usage
+### normal usage like other flow layouts
 You can use this FlowLayout like below in your layout file
 ```xml
 <cn.lankton.flowlayout.FlowLayout
@@ -48,22 +48,22 @@ You can use this FlowLayout like below in your layout file
 </cn.lankton.flowlayout.FlowLayout>
 ```
 As you see, this FlowLayout provides an attribute named "**lineSpacing**", which can be used to set the distance between lines in the FlowLayout.
-###compress child elements###
+### compress child elements
 When you want to compress child elements, use the code like below:  
 ```
 flowLayout.relayoutToCompress();
 ```
 The FlowLayout compresses child elements **by changing their sequence**.
-###align child elemnts###
+### align child elemnts
 When you want to align child elements, use the code like below: 
 ```
 flowLayout.relayoutToAlign();
 ```
 The order of child elements **won't be changed**.
-###cut###
+### cut
 You can cut the flowlayout to the specified number of lines.
 ```
 flowLayout.specifyLines(int)
 ```
-##summary##
+## summary
 May this FlowLayout help you. Thanks.
