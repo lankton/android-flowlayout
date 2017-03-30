@@ -33,7 +33,7 @@ compile 'cn.lankton:flowlayout:latest version'
 <img src="https://github.com/lankton/android-flowlayout/blob/master/pictures/flowlayout_specify.gif?raw=true" width="260px"/> 
 
 This pic shows to cut the flowlayout to the specified number of lines.
-##Usage##
+## Usage
 ###normal usage like other flow layouts###
 You can use this FlowLayout like below in your layout file
 ```xml
@@ -60,10 +60,10 @@ When you want to align child elements, use the code like below:
 flowLayout.relayoutToAlign();
 ```
 The order of child elements **won't be changed**.
-###cut###
+### cut
 You can cut the flowlayout to the specified number of lines.
 ```
 flowLayout.specifyLines(int)
 ```
-##summary##
+## summary
 May this FlowLayout help you. Thanks.
