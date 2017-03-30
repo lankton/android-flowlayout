@@ -22,7 +22,7 @@ compile 'cn.lankton:flowlayout:latest version'
   <type>pom</type>
 </dependency>
 ```
-## Effect
+##Effect##
 <img src="https://github.com/lankton/android-flowlayout/blob/master/pictures/flowlayout_add.gif?raw=true" width="260px"/>
 <img src="https://github.com/lankton/android-flowlayout/blob/master/pictures/flowlayout_compress.gif?raw=true" width="260px"/>
 <img src="https://github.com/lankton/android-flowlayout/blob/master/pictures/flowlayout_align.gif?raw=true" width="260px"/>   
