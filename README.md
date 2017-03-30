@@ -48,13 +48,13 @@ You can use this FlowLayout like below in your layout file
 </cn.lankton.flowlayout.FlowLayout>
 ```
 As you see, this FlowLayout provides an attribute named "**lineSpacing**", which can be used to set the distance between lines in the FlowLayout.
-###compress child elements###
+### compress child elements
 When you want to compress child elements, use the code like below:  
 ```
 flowLayout.relayoutToCompress();
 ```
 The FlowLayout compresses child elements **by changing their sequence**.
-###align child elemnts###
+### align child elemnts
 When you want to align child elements, use the code like below: 
 ```
 flowLayout.relayoutToAlign();
